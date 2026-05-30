@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estructura — Vibe Coding Studio</title>
+<meta name="description" content="Vibe-coded apps, tools, and experiments by Alejandro Abian.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23000'/><text x='16' y='22' text-anchor='middle' font-family='monospace' font-size='18' fill='%23DA5C2C' font-weight='bold'>E</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#000;--fg:#e4e4e7;--muted:#a1a1aa;--accent:#DA5C2C;--accent-dim:#b84a22;--border:#1a1a2e;--card:#0a0a0f;--radius:2px}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'IBM Plex Mono',monospace;background:var(--bg);color:var(--fg);line-height:1.7;min-height:100vh}
+a{color:var(--accent);text-decoration:none;transition:color .2s}
+a:hover{color:#fff}
+.container{max-width:800px;margin:0 auto;padding:0 1.5rem}
+
+/* Header */
+header{padding:2rem 0 0;border-bottom:1px solid var(--border);margin-bottom:3rem}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding-bottom:1rem}
+.logo{display:flex;align-items:center;gap:.75rem}
+.logo-mark{width:28px;height:28px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#000;border-radius:var(--radius)}
+.logo-text{font-size:.95rem;font-weight:600;letter-spacing:.02em;color:var(--fg)}
+.logo-text span{color:var(--accent)}
+nav{display:flex;gap:1.5rem}
+nav a{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+nav a:hover{color:var(--accent)}
+
+/* Hero */
+.hero{padding:3rem 0 4rem}
+.hero h1{font-size:2.2rem;font-weight:700;line-height:1.2;margin-bottom:1rem}
+.hero h1 span{color:var(--accent)}
+.hero p{font-size:.9rem;color:var(--muted);max-width:600px;margin-bottom:2rem}
+.hero-actions{display:flex;gap:1rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;font-family:inherit;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--accent);color:#000;border-color:var(--accent);font-weight:600}
+.btn-primary:hover{background:var(--accent-dim)}
+.btn-outline{background:transparent;color:var(--fg)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Section headings */
+.section-title{font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:2rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.section-title span{color:var(--accent)}
+
+/* Apps grid */
+.apps-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:4rem}
+@media(max-width:600px){.apps-grid{grid-template-columns:1fr}}
+.app-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:border-color .2s}
+.app-card:hover{border-color:var(--accent)}
+.app-card .label{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.75rem}
+.app-card h3{font-size:1rem;font-weight:600;margin-bottom:.5rem}
+.app-card p{font-size:.8rem;color:var(--muted);margin-bottom:1rem;line-height:1.5}
+.app-card .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.app-card .tags span{font-size:.65rem;padding:.15rem .5rem;border:1px solid var(--border);border-radius:var(--radius);color:var(--muted)}
+.app-card .link{font-size:.75rem;color:var(--accent)}
+
+/* Status indicator */
+.coming-soon{opacity:.5;pointer-events:none}
+
+/* Process */
+.process-steps{display:flex;flex-direction:column;gap:1rem;margin-bottom:4rem}
+.step{display:flex;gap:1rem;align-items:flex-start}
+.step-num{font-size:.75rem;font-weight:700;color:var(--accent);min-width:2rem;line-height:1.7}
+.step-content h4{font-size:.85rem;font-weight:600;margin-bottom:.25rem}
+.step-content p{font-size:.8rem;color:var(--muted)}
+
+/* Footer */
+footer{padding:2rem 0;border-top:1px solid var(--border);margin-top:3rem}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--muted)}
+.footer-links{display:flex;gap:1.5rem}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container header-inner">
+  <div class="logo">
+    <div class="logo-mark">E</div>
+    <div class="logo-text">Estructura<span>.</span>Studio</div>
+  </div>
+  <nav>
+    <a href="#apps">Apps</a>
+    <a href="#about">About</a>
+    <a href="https://viewstate.co" target="_blank">→ viewstate</a>
+  </nav>
+</div>
+</header>
+
+<main class="container">
+
+<!-- Hero -->
+<section class="hero">
+  <h1>Vibe coding <span>apps</span></h1>
+  <p>Tools, experiments, and small products built with AI. Each one started as a conversation and shipped as working software.</p>
+  <div class="hero-actions">
+    <a href="#apps" class="btn btn-primary">Browse Apps</a>
+    <a href="mailto:hello@viewstate.co" class="btn btn-outline">Get in Touch</a>
+  </div>
+</section>
+
+<!-- Apps -->
+<section id="apps">
+  <h2 class="section-title"><span>//</span> Apps</h2>
+  <div class="apps-grid">
+    <div class="app-card coming-soon">
+      <div class="label">coming soon</div>
+      <h3>First App</h3>
+      <p>A vibe-coded tool shipping soon. This space will showcase the first project built entirely through AI pair programming.</p>
+      <div class="tags">
+        <span>ai-built</span>
+        <span>vibe-code</span>
+      </div>
+    </div>
+    <div class="app-card coming-soon">
+      <div class="label">coming soon</div>
+      <h3>Next Project</h3>
+      <p>Another experiment in the pipeline. Each app here represents a different problem solved through rapid AI prototyping.</p>
+      <div class="tags">
+        <span>prototype</span>
+        <span>tool</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="about">
+  <h2 class="section-title"><span>//</span> How It Works</h2>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h4>Idea → Prompt</h4>
+        <p>Every app starts as a plain-English description of what it should do. No specs, no wireframes.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h4>AI Builds It</h4>
+        <p>The AI agent iterates on the code until it works. I steer, test, and refine — AI writes the bulk.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h4>Ship Fast</h4>
+        <p>Working software hits production in hours or days, not weeks. No meetings, no sprints, no Jira.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <h4>Repeat</h4>
+        <p>Each app teaches the next. The process compounds — faster builds, better results, more ideas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+<div class="container footer-inner">
+  <span>© 2026 Estructura.Studio — a vibe coding experiment by <a href="https://viewstate.co">Alejandro Abian</a></span>
+  <div class="footer-links">
+    <a href="mailto:hello@viewstate.co">Email</a>
+    <a href="https://github.com/alexabian">GitHub</a>
+  </div>
+</div>
+</footer>
+
+</body>
+</html>
