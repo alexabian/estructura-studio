@@ -47,46 +47,110 @@
         place-items: center;
       }
 
-      svg.ring {
-        width: 100%;
-        height: 100%;
+      .orbit {
+        position: absolute;
+        inset: 0;
         animation: spin 12s linear infinite;
-        overflow: visible;
         filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.06));
       }
 
-      .ring text {
-        fill: var(--fg);
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 4px;
-        text-transform: lowercase;
-      }
-
-      .ring .word {
-        fill: var(--fg);
+      .label {
+        position: absolute;
+        color: var(--fg);
         font-size: 11px;
         font-weight: 600;
         letter-spacing: 2.2px;
         text-transform: lowercase;
+        line-height: 1;
+        white-space: nowrap;
       }
 
-      .ring .dot {
-        fill: var(--fg);
+      .label.top {
+        top: 17%;
+        left: 50%;
+        transform: translateX(-50%) rotate(180deg);
       }
 
-      .ring .guide {
-        fill: none;
-        stroke: var(--muted);
-        stroke-width: 1;
+      .label.bottom {
+        bottom: 17%;
+        left: 50%;
+        transform: translateX(-50%);
       }
 
-      .ring .guide.inner {
-        stroke: rgba(243, 243, 243, 0.1);
+      .label.left {
+        left: 17%;
+        top: 50%;
+        transform: translateY(-50%) rotate(-90deg);
       }
 
-      .ring .center-dot {
-        fill: var(--fg);
+      .label.right {
+        right: 17%;
+        top: 50%;
+        transform: translateY(-50%) rotate(90deg);
+      }
+
+      .orbit-dot {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--fg);
+      }
+
+      .orbit-dot.top {
+        top: 9%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .orbit-dot.right {
+        right: 9%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .orbit-dot.bottom {
+        bottom: 9%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .orbit-dot.left {
+        left: 9%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .core {
+        position: absolute;
+        inset: 50%;
+        width: 28%;
+        aspect-ratio: 1;
+        transform: translate(-50%, -50%);
+        border: 1px solid var(--muted);
+        border-radius: 50%;
+      }
+
+      .core::before,
+      .core::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .core::before {
+        inset: 18%;
+        border: 1px solid rgba(243, 243, 243, 0.1);
+      }
+
+      .core::after {
+        width: 6px;
+        height: 6px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--fg);
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
       }
 
       @keyframes spin {
@@ -110,31 +174,19 @@
   <body>
     <main aria-label="estructura.studio landing page">
       <div class="mark">
-        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
-          <defs>
-            <path id="topArc" d="M48,100 A52,52 0 0,1 152,100" />
-            <path id="bottomArc" d="M48,100 A52,52 0 0,0 152,100" />
-          </defs>
+        <div class="orbit" aria-hidden="true">
+          <div class="label top">estructura</div>
+          <div class="label right">estudio</div>
+          <div class="label bottom">estructura</div>
+          <div class="label left">studio</div>
 
-          <circle class="guide" cx="100" cy="100" r="18" />
-          <circle class="guide inner" cx="100" cy="100" r="10" />
-          <circle class="center-dot" cx="100" cy="100" r="2.8" />
+          <div class="orbit-dot top"></div>
+          <div class="orbit-dot right"></div>
+          <div class="orbit-dot bottom"></div>
+          <div class="orbit-dot left"></div>
+        </div>
 
-          <text class="word">
-            <textPath href="#topArc" startOffset="50%" text-anchor="middle">estructura</textPath>
-          </text>
-          <text class="word">
-            <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">estructura</textPath>
-          </text>
-
-          <text class="word" x="35" y="100" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 35 100)">studio</text>
-          <text class="word" x="165" y="100" text-anchor="middle" dominant-baseline="middle" transform="rotate(90 165 100)">estudio</text>
-
-          <circle class="dot" cx="35" cy="100" r="2.2" />
-          <circle class="dot" cx="100" cy="35" r="2.2" />
-          <circle class="dot" cx="165" cy="100" r="2.2" />
-          <circle class="dot" cx="100" cy="165" r="2.2" />
-        </svg>
+        <div class="core" aria-hidden="true"></div>
       </div>
     </main>
   </body>
