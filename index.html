@@ -63,35 +63,30 @@
         text-transform: lowercase;
       }
 
-      .core {
-        position: absolute;
-        inset: 50%;
-        width: 28%;
-        aspect-ratio: 1;
-        transform: translate(-50%, -50%);
-        border: 1px solid var(--muted);
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
+      .ring .word {
+        fill: var(--fg);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2.2px;
+        text-transform: lowercase;
       }
 
-      .core::before,
-      .core::after {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
+      .ring .dot {
+        fill: var(--fg);
       }
 
-      .core::before {
-        inset: 18%;
-        border: 1px solid rgba(243, 243, 243, 0.1);
+      .ring .guide {
+        fill: none;
+        stroke: var(--muted);
+        stroke-width: 1;
       }
 
-      .core::after {
-        width: 6px;
-        height: 6px;
-        background: var(--fg);
-        box-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+      .ring .guide.inner {
+        stroke: rgba(243, 243, 243, 0.1);
+      }
+
+      .ring .center-dot {
+        fill: var(--fg);
       }
 
       @keyframes spin {
@@ -117,15 +112,29 @@
       <div class="mark">
         <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
           <defs>
-            <path id="circlePath" d="M100,100 m-70,0 a70,70 0 1,0 140,0 a70,70 0 1,0 -140,0" />
+            <path id="topArc" d="M48,100 A52,52 0 0,1 152,100" />
+            <path id="bottomArc" d="M48,100 A52,52 0 0,0 152,100" />
           </defs>
-          <text>
-            <textPath href="#circlePath">
-              estructura • studio • estructura • studio • estructura • studio •
-            </textPath>
+
+          <circle class="guide" cx="100" cy="100" r="18" />
+          <circle class="guide inner" cx="100" cy="100" r="10" />
+          <circle class="center-dot" cx="100" cy="100" r="2.8" />
+
+          <text class="word">
+            <textPath href="#topArc" startOffset="50%" text-anchor="middle">estructura</textPath>
           </text>
+          <text class="word">
+            <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">estructura</textPath>
+          </text>
+
+          <text class="word" x="35" y="100" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 35 100)">studio</text>
+          <text class="word" x="165" y="100" text-anchor="middle" dominant-baseline="middle" transform="rotate(90 165 100)">estudio</text>
+
+          <circle class="dot" cx="35" cy="100" r="2.2" />
+          <circle class="dot" cx="100" cy="35" r="2.2" />
+          <circle class="dot" cx="165" cy="100" r="2.2" />
+          <circle class="dot" cx="100" cy="165" r="2.2" />
         </svg>
-        <div class="core" aria-hidden="true"></div>
       </div>
     </main>
   </body>
