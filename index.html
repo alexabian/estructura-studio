@@ -168,20 +168,29 @@
         }
       }
 
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
       @media (max-width: 640px) {
         main {
           width: min(82vw, 280px);
-        }
-
-        .ring text {
-          font-size: 10px;
-          letter-spacing: 3px;
         }
       }
     </style>
   </head>
   <body>
     <main aria-label="estructura.studio landing page">
+      <h1 class="sr-only">estructura.studio</h1>
+      <p class="sr-only">Minimal landing page showing the animated estructura.studio brand mark.</p>
       <div class="mark">
         <div class="orbit" aria-hidden="true">
           <div class="label top">estructura</div>
